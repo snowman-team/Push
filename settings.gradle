@@ -1,0 +1,2 @@
+include ':app', ':manager', ':firebase', ':xiaomi', ':huawei'
+rootProject.name = 'Push'
