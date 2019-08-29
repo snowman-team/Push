@@ -6,10 +6,6 @@ Make it easier to use push with different platforms.
 ## Installation
 
 ```groovy
-repositories {
-    maven { url "https://xueqiumobile.bintray.com/maven" }
-}
-
 dependencies {
     // add dependency, please replace x.y.z to the latest version
     implementation "com.xueqiu.push:manager:x.y.z"
