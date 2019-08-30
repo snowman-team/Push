@@ -1,4 +1,4 @@
-Snowball Android Notification Library
+Snowball Android Notification Library <br> [ ![Download](https://api.bintray.com/packages/aquarids/maven/push/images/download.svg?version=0.1.0) ](https://bintray.com/aquarids/maven/push/0.1.0/link)
 ============
 
 Make it easier to use push with different platforms.
