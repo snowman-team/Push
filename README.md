@@ -1,4 +1,4 @@
-Snowball Android Notification Library <br> [ ![Download](https://api.bintray.com/packages/aquarids/maven/push/images/download.svg?version=0.1.0) ](https://bintray.com/aquarids/maven/push/0.1.0/link)
+Snowball Android Notification Library <br> [ ![Download](https://api.bintray.com/packages/aquarids/maven/push/images/download.svg?version=0.1.1) ](https://bintray.com/aquarids/maven/push/0.1.1/link)
 ============
 
 Make it easier to use push with different platforms.
@@ -13,6 +13,8 @@ dependencies {
     implementation "com.xueqiu.push:xiaomi:x.y.z"
     // with huawei
     implementation "com.xueqiu.push:huawei:x.y.z"
+    // with firebase
+    implementation "com.xueqiu.push:firebase:x.y.z"
 }
 ```
 
@@ -21,6 +23,7 @@ dependencies {
 Before you use the library, please read relevant documents.
 - [MiPush](https://dev.mi.com/console/doc/detail?pId=41)
 - [HuaweiPush](https://developer.huawei.com/consumer/cn/service/hms/catalog/huaweipush_agent.html?page=hmssdk_huaweipush_devguide_client_agent)
+- [FirebaseMessage](https://firebase.google.com/docs/cloud-messaging/android/client)
 
 Initialize the push manager in the proper place.
 ```kotlin
@@ -55,29 +58,29 @@ handler?.setUser(this, "uid")
 
 The methods list of handler.
 
-| Method | MiPush | HuaweiPush |
-| ------ | ------ | ------ |
-| requestToken | Y | Y |
-| setUser | Y | N |
-| removeUser | Y | N |
-| setAlias | Y | N |
-| removeAlias | Y | N |
-| subscribeTopic | Y | N |
-| unsubscribeTopic | Y | N |
+| Method | MiPush | HuaweiPush | FirebaseMessage |
+| ------ | ------ | ------ | ------ | 
+| requestToken | Y | Y | Y |
+| setUser | Y | N | N |
+| removeUser | Y | N | N |
+| setAlias | Y | N | N |
+| removeAlias | Y | N | N |
+| subscribeTopic | Y | N | Y |
+| unsubscribeTopic | Y | N | Y |
 
 And the push event list.
 
-| Event | MiPush | HuaweiPush |
-| ------ | ------ | ------ |
-| notification_click | Y | Y |
-| notification_open | N | Y |
-| receive_pass_through_message | Y | Y |
-| set_user | Y | N |
-| remove_user | Y | N |
-| set_alias | Y | N |
-| remove_alias | Y | N |
-| subscribe_topic | Y | N |
-| unsubscribe_topic | Y | N |
+| Event | MiPush | HuaweiPush | Firebase |
+| ------ | ------ | ------ | ------ |
+| notification_click | Y | Y | N |
+| notification_open | N | Y | N |
+| receive_message | Y | Y | Y |
+| set_user | Y | N | N |
+| remove_user | Y | N | N |
+| set_alias | Y | N | N |
+| remove_alias | Y | N | N |
+| subscribe_topic | Y | N | Y |
+| unsubscribe_topic | Y | N | Y |
 
 PS: If your application is in the background, even on Huawei's mobile phone you won't receive any push events from huawei push.
 
@@ -102,6 +105,29 @@ Set huaweiAppId at AndroidManifest.
 Then register it to push manager.
 ```kotlin
 withHandler(HuaweiPushHandler())
+```
+
+### Firebase
+
+Firstly, add firebase to your project and add your google-services.json to module (app-level) folder..
+```groovy
+buildscript {
+
+  repositories {
+    google()  // Google's Maven repository
+  }
+
+  dependencies {
+    classpath 'com.google.gms:google-services:4.3.1'  // Google Services plugin
+  }
+}
+
+apply plugin: 'com.google.gms.google-services' // In your module (app-level) Gradle file, add this plugin
+```
+
+Then register it to push manager.
+```kotlin
+withHandler(FirebaseMessageHandler())
 ```
 
 ### Custom handler

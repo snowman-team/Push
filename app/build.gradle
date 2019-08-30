@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -40,4 +42,5 @@ dependencies {
     implementation project(path: ':manager')
     implementation project(path: ':xiaomi')
     implementation project(path: ':huawei')
+    implementation project(path: ':firebase')
 }

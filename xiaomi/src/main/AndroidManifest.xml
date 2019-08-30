@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <permission
         android:name="${applicationId}.permission.MIPUSH_RECEIVE"
@@ -19,6 +20,15 @@
         <service
             android:name="com.xiaomi.push.service.XMPushService"
             android:enabled="true" />
+
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.PingReceiver"
+            android:exported="false"
+            android:process=":pushservice">
+            <intent-filter>
+                <action android:name="com.xiaomi.push.PING_TIMER" />
+            </intent-filter>
+        </receiver>
 
         <service
             android:name="com.xiaomi.push.service.XMJobService"

@@ -10,7 +10,7 @@ object PushManager {
 
     const val EVENT_KEY_NOTIFICATION_CLICK = "notification_click"
     const val EVENT_KEY_NOTIFICATION_OPEN = "notification_open"
-    const val EVENT_KEY_RECEIVE_MESSAGE = "receive_pass_through_message"
+    const val EVENT_KEY_RECEIVE_MESSAGE = "receive_message"
     const val EVENT_SET_USER = "set_user"
     const val EVENT_REMOVE_USER = "remove_user"
     const val EVENT_KEY_SET_ALIAS = "set_alias"

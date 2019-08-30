@@ -26,7 +26,7 @@ class PushInfo {
     var category: String? = null
 
     @JvmField
-    var isPassThrough: Boolean = false
+    var isPassThrough: Boolean? = null
 
     @JvmField
     var extra: Bundle? = null
