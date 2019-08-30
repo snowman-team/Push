@@ -8,7 +8,7 @@ Make it easier to use push with different platforms.
 ```groovy
 dependencies {
     // add dependency, please replace x.y.z to the latest version
-    implementation "com.xueqiu.push:manager:x.y.z"
+    implementation "com.xueqiu.push:push:x.y.z"
     // with xiaomi push
     implementation "com.xueqiu.push:xiaomi:x.y.z"
     // with huawei
